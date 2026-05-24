@@ -1,0 +1,30 @@
+/* Mirrors home layout — novels catalog only */
+
+.novels-page--home {
+  min-height: calc(100dvh - var(--header-h));
+  padding-bottom: 2.5rem;
+  background: var(--bg);
+}
+
+.novels-sections {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.novels-sections .home-section-head,
+.novels-sections .period-tabs {
+  padding-inline: 0;
+}
+
+.novels-empty-wrap {
+  padding: 3rem 0;
+}
+
+.novels-empty {
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  border-radius: 14px;
+  border: 1px dashed color-mix(in srgb, #ff4d8d 22%, var(--border-subtle));
+}

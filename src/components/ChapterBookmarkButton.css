@@ -1,0 +1,63 @@
+.chapter-bookmark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    transform 0.12s ease,
+    box-shadow 0.15s ease;
+}
+
+.chapter-bookmark-btn:hover {
+  color: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.chapter-bookmark-btn.is-saved {
+  color: var(--accent);
+}
+
+.chapter-bookmark-btn--reader {
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, var(--bg-card) 55%, transparent);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chapter-bookmark-btn--reader.is-saved {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-card));
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.chapter-bookmark-btn--row {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: color-mix(in srgb, var(--bg-card) 50%, transparent);
+  flex-shrink: 0;
+}
+
+.chapter-bookmark-btn--row.is-saved {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-card));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.chapter-bookmark-btn--icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}

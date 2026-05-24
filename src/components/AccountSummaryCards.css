@@ -1,0 +1,140 @@
+.account-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.account-summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.account-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.55rem 0.35rem 0.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+  max-width: 100%;
+}
+
+.account-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.account-chip--coins {
+  border-color: rgba(255, 77, 141, 0.3);
+}
+
+.account-chip--plan {
+  border-color: color-mix(in srgb, var(--plan-accent, var(--accent)) 35%, var(--border-subtle));
+}
+
+.account-chip--expired {
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.account-chip-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bg-hover);
+  color: var(--accent-soft);
+}
+
+.account-chip--coins .account-chip-icon {
+  background: rgba(255, 77, 141, 0.15);
+  color: var(--accent);
+}
+
+.account-chip--plan .account-chip-icon {
+  background: color-mix(in srgb, var(--plan-accent, var(--accent)) 18%, transparent);
+  color: var(--plan-accent, var(--accent));
+}
+
+.account-chip-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.account-chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.account-chip-text strong {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent-soft);
+}
+
+.account-chip--plan .account-chip-text strong {
+  color: var(--plan-accent, var(--text));
+}
+
+.account-chip-text > span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 9rem;
+}
+
+.account-chip-warn {
+  color: #f87171 !important;
+}
+
+.account-summary-foot {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.account-summary-foot a {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+/* Side menu: stack vertically, full width chips */
+.account-summary--compact .account-summary-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.account-summary--compact .account-chip {
+  width: 100%;
+}
+
+.account-summary--compact .account-chip-text > span {
+  max-width: none;
+}
+
+.side-menu-account {
+  padding: 0.5rem 0.65rem 0.35rem;
+}
+
+.store-account-summary {
+  margin-top: 0.15rem;
+}
+
+.profile-top-summary {
+  margin-top: 0.55rem;
+}

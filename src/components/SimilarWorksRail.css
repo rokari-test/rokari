@@ -1,0 +1,49 @@
+.similar-works-rail {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.similar-works-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  padding-inline: 0.1rem;
+}
+
+.similar-works-head-text {
+  min-width: 0;
+}
+
+.similar-works-head h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.similar-works-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.similar-works-view-all {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.similar-works-view-all:hover {
+  color: var(--accent);
+}
+
+.similar-works-rail .series-carousel {
+  margin-inline: calc(-1 * var(--site-gutter));
+}

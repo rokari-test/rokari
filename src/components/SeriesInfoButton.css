@@ -1,0 +1,50 @@
+.series-info-btn {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.series-info-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.series-info-btn:hover,
+.series-info-btn:focus-visible {
+  background: rgba(0, 0, 0, 0.9);
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 1px;
+}
+
+.manhwa-card:hover .series-info-btn,
+.series-card:hover .series-info-btn,
+.feed-tile-cover-wrap:hover .series-info-btn,
+.series-info-btn:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (hover: none) {
+  .series-info-btn {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

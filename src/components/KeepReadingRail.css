@@ -1,0 +1,138 @@
+.keep-rail {
+  --keep-card-w: 168px;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.keep-rail--home {
+  margin-top: 0;
+  padding-top: 1.5rem;
+}
+
+.keep-rail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  padding-inline: 0.1rem;
+}
+
+.keep-rail-head h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.keep-rail-view-all {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.keep-rail-view-all:hover {
+  color: var(--accent);
+}
+
+.keep-rail-carousel {
+  position: relative;
+  margin-inline: calc(-1 * var(--site-gutter));
+}
+
+.keep-rail-carousel::before,
+.keep-rail-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 1rem;
+  width: clamp(24px, 4vw, 56px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.keep-rail-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+}
+
+.keep-rail-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+}
+
+.keep-rail-track {
+  display: flex;
+  gap: var(--card-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--site-gutter);
+  padding: 0.4rem var(--site-gutter) 1rem;
+  scrollbar-width: none;
+}
+
+.keep-rail-track::-webkit-scrollbar {
+  display: none;
+}
+
+.keep-rail-btn {
+  position: absolute;
+  top: 42%;
+  z-index: 4;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s,
+    transform 0.18s;
+}
+
+.keep-rail-btn:hover {
+  transform: translateY(-50%) scale(1.06);
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent-soft);
+}
+
+.keep-rail-btn--prev {
+  left: 0.15rem;
+}
+
+.keep-rail-btn--next {
+  right: 0.15rem;
+}
+
+@media (max-width: 640px) {
+  .keep-rail {
+    --keep-card-w: 148px;
+  }
+
+  .keep-rail-carousel::before,
+  .keep-rail-carousel::after {
+    width: 20px;
+  }
+
+  .keep-rail-btn {
+    display: none;
+  }
+
+  .keep-rail-track {
+    scroll-snap-type: x proximity;
+    padding-inline: 0.15rem;
+  }
+}

@@ -1,0 +1,663 @@
+/* Rokari Reader Deck — profile popover */
+
+.side-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  border: none;
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+
+.side-menu--popover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 151;
+  width: min(16.25rem, calc(100vw - 1.25rem));
+  max-height: min(86vh, calc(100dvh - var(--header-h) - 12px));
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, #fbbf24 22%, var(--border-subtle));
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent),
+    0 18px 50px rgba(0, 0, 0, 0.45),
+    0 0 40px color-mix(in srgb, #fbbf24 8%, transparent);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: deckPop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: top right;
+}
+
+@keyframes deckPop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* —— Hero pass —— */
+.deck-hero {
+  position: relative;
+  padding: 0.7rem 0.7rem 0.6rem;
+  overflow: hidden;
+  border-bottom: 1px solid color-mix(in srgb, #fbbf24 18%, var(--border-subtle));
+  background:
+    radial-gradient(ellipse 90% 70% at 100% -20%, color-mix(in srgb, #fbbf24 16%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 55% at 0% 110%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 52%),
+    color-mix(in srgb, var(--bg-card) 88%, var(--bg-elevated));
+}
+
+.deck-hero-glow {
+  position: absolute;
+  inset: -40% auto auto 35%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, color-mix(in srgb, #fcd34d 28%, transparent), transparent 68%);
+  pointer-events: none;
+}
+
+.deck-hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--border-subtle) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--border-subtle) 55%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
+  mask-image: linear-gradient(180deg, black, transparent 85%);
+  pointer-events: none;
+}
+
+.deck-identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.15rem 0.1rem 0.65rem;
+  border: none;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.deck-identity:hover .deck-identity-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.deck-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.deck-avatar {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(145deg, var(--accent), var(--accent-soft));
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.user-avatar.deck-avatar {
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.deck-avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  background: conic-gradient(
+    #fbbf24 var(--deck-progress),
+    color-mix(in srgb, var(--border-subtle) 80%, transparent) 0
+  );
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+}
+
+.deck-identity-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.deck-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fcd34d;
+}
+
+.deck-identity-copy strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.deck-handle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.deck-role {
+  padding: 0.08rem 0.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.deck-guest-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.deck-identity-arrow {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #fcd34d;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Account stat chips */
+.deck-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.deck-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.deck-stat:hover {
+  transform: translateY(-1px);
+}
+
+.deck-stat--coins {
+  border-color: color-mix(in srgb, #fbbf24 28%, var(--border-subtle));
+  background:
+    radial-gradient(ellipse 120% 90% at 100% 0%, color-mix(in srgb, #fcd34d 14%, transparent), transparent 55%),
+    color-mix(in srgb, var(--bg-card) 88%, transparent);
+}
+
+.deck-stat--coins:hover {
+  border-color: color-mix(in srgb, #fbbf24 45%, var(--border-subtle));
+  box-shadow: 0 6px 16px color-mix(in srgb, #f59e0b 18%, transparent);
+}
+
+.deck-stat--plan {
+  border-color: color-mix(in srgb, var(--plan-accent, var(--accent)) 30%, var(--border-subtle));
+  background:
+    radial-gradient(ellipse 120% 90% at 0% 0%, color-mix(in srgb, var(--plan-accent, var(--accent)) 12%, transparent), transparent 55%),
+    color-mix(in srgb, var(--bg-card) 88%, transparent);
+}
+
+.deck-stat--plan:hover {
+  border-color: color-mix(in srgb, var(--plan-accent, var(--accent)) 45%, var(--border-subtle));
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--plan-accent, var(--accent)) 16%, transparent);
+}
+
+.deck-stat--plan.is-expired {
+  border-color: color-mix(in srgb, #f87171 35%, var(--border-subtle));
+}
+
+.deck-stat-gem {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.deck-stat--coins .deck-stat-gem {
+  color: #fcd34d;
+  background: linear-gradient(145deg, color-mix(in srgb, #f59e0b 22%, transparent), color-mix(in srgb, #fbbf24 8%, transparent));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.deck-stat--plan .deck-stat-gem {
+  color: var(--plan-accent, var(--accent-soft));
+  background: color-mix(in srgb, var(--plan-accent, var(--accent)) 14%, transparent);
+}
+
+.deck-stat--plan.is-expired .deck-stat-gem {
+  color: #f87171;
+  background: color-mix(in srgb, #f87171 12%, transparent);
+}
+
+.deck-stat-gem .menu-lucide {
+  width: 14px;
+  height: 14px;
+}
+
+.deck-stat-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.15;
+}
+
+.deck-stat-main strong {
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-stat--coins .deck-stat-main strong {
+  color: #fde68a;
+}
+
+.deck-stat--plan .deck-stat-main strong {
+  color: var(--plan-accent, var(--text));
+}
+
+.deck-stat--plan.is-expired .deck-stat-main strong {
+  color: #fca5a5;
+}
+
+.deck-stat-tag {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* —— Shelf navigation —— */
+.deck-shelf {
+  padding: 0.5rem 0.55rem 0.25rem;
+}
+
+.deck-shelf--studio {
+  padding-top: 0.15rem;
+  border-top: 1px dashed color-mix(in srgb, var(--border-subtle) 85%, transparent);
+}
+
+.deck-shelf-label {
+  margin: 0 0 0.45rem 0.15rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.deck-shelf--studio .deck-shelf-label {
+  color: #86efac;
+}
+
+.deck-spine-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.deck-spine {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.42rem 0.45rem 0.42rem 0.4rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+  box-shadow: inset 3px 0 0 transparent;
+}
+
+.deck-spine:hover {
+  background: color-mix(in srgb, var(--bg-hover) 85%, transparent);
+  border-color: var(--border-subtle);
+  transform: translateX(2px);
+}
+
+.deck-spine--rose:hover,
+.deck-spine--rose:focus-visible {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.deck-spine--amber:hover,
+.deck-spine--amber:focus-visible {
+  box-shadow: inset 3px 0 0 #fbbf24;
+}
+
+.deck-spine--gold:hover,
+.deck-spine--gold:focus-visible {
+  box-shadow: inset 3px 0 0 #fcd34d;
+}
+
+.deck-spine--violet:hover,
+.deck-spine--violet:focus-visible {
+  box-shadow: inset 3px 0 0 #a78bfa;
+}
+
+.deck-spine--coral:hover,
+.deck-spine--coral:focus-visible {
+  box-shadow: inset 3px 0 0 #f87171;
+}
+
+.deck-spine--mint:hover,
+.deck-spine--mint:focus-visible {
+  box-shadow: inset 3px 0 0 #34d399;
+}
+
+.deck-spine--muted:hover,
+.deck-spine--muted:focus-visible {
+  box-shadow: inset 3px 0 0 var(--text-muted);
+}
+
+.deck-spine--studio {
+  background: color-mix(in srgb, #34d399 5%, transparent);
+}
+
+.deck-spine-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.deck-spine--rose .deck-spine-icon { color: var(--accent); }
+.deck-spine--amber .deck-spine-icon { color: #fbbf24; }
+.deck-spine--gold .deck-spine-icon { color: #fcd34d; }
+.deck-spine--violet .deck-spine-icon { color: #a78bfa; }
+.deck-spine--coral .deck-spine-icon { color: #f87171; }
+.deck-spine--mint .deck-spine-icon { color: #34d399; }
+
+.deck-spine-icon .menu-lucide {
+  width: 16px;
+  height: 16px;
+}
+
+.deck-spine-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.deck-spine-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.deck-spine-chevron {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+
+.deck-spine-badge {
+  flex-shrink: 0;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: var(--radius-pill);
+  display: grid;
+  place-items: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #1a1200;
+  background: linear-gradient(135deg, #fcd34d, #f59e0b);
+  box-shadow: 0 2px 8px color-mix(in srgb, #f59e0b 35%, transparent);
+}
+
+/* —— Dock controls —— */
+.deck-dock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+  padding: 0.45rem 0.55rem 0.55rem;
+  border-top: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+}
+
+.deck-dock-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-card) 88%, transparent);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.deck-dock-btn:hover {
+  border-color: color-mix(in srgb, #fbbf24 35%, var(--border));
+  background: color-mix(in srgb, #fbbf24 8%, var(--bg-card));
+}
+
+.deck-dock-btn .menu-lucide {
+  width: 15px;
+  height: 15px;
+  color: #fcd34d;
+}
+
+.deck-dock-btn--palette .deck-palette-preview {
+  display: flex;
+  gap: 2px;
+}
+
+.deck-palette-preview span {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid var(--border-subtle);
+}
+
+.deck-saver {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px dashed color-mix(in srgb, var(--border-subtle) 90%, transparent);
+  border-radius: 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.deck-saver-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.deck-saver span:not(.deck-switch):not(.deck-switch-thumb) {
+  flex: 1;
+}
+
+.deck-switch {
+  width: 34px;
+  height: 18px;
+  margin-left: auto;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--bg-card);
+  padding: 2px;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.deck-switch.is-on {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.deck-switch-thumb {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s;
+}
+
+.deck-switch.is-on .deck-switch-thumb {
+  transform: translateX(16px);
+  background: white;
+}
+
+/* —— Footer —— */
+.deck-foot {
+  padding: 0 0.55rem 0.55rem;
+}
+
+.deck-signout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, #f87171 25%, var(--border-subtle));
+  border-radius: 11px;
+  background: color-mix(in srgb, #f87171 6%, transparent);
+  color: #fca5a5;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.deck-signout .menu-lucide {
+  width: 15px;
+  height: 15px;
+}
+
+.deck-signout:hover {
+  background: color-mix(in srgb, #f87171 12%, transparent);
+  border-color: color-mix(in srgb, #f87171 45%, var(--border-subtle));
+}
+
+.deck-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, #f59e0b 35%, var(--accent)));
+  color: #fff;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.deck-signin:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.menu-lucide {
+  display: block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .side-menu--popover {
+    width: min(15.5rem, calc(100vw - 1rem));
+  }
+}

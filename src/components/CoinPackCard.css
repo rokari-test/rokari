@@ -1,0 +1,269 @@
+/* Rokari coin packs — distinct from generic shop cards */
+
+.coin-pack {
+  --pack-accent: var(--accent);
+  --pack-glow: var(--accent-glow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.35rem 1.15rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--pack-accent) 22%, var(--border-subtle));
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, color-mix(in srgb, var(--pack-accent) 16%, transparent), transparent 58%),
+    color-mix(in srgb, var(--bg-card) 94%, #0c0a14);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 color-mix(in srgb, #fff 6%, transparent);
+  overflow: hidden;
+  text-align: center;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.coin-pack:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--pack-accent) 48%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pack-glow) 35%, transparent),
+    0 20px 44px rgba(0, 0, 0, 0.4);
+}
+
+.coin-pack-glow {
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 55%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--pack-accent) 22%, transparent), transparent 68%);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.coin-pack--popular {
+  --pack-accent: #f472b6;
+  --pack-glow: rgba(244, 114, 182, 0.45);
+  border-color: color-mix(in srgb, #f472b6 55%, var(--border));
+}
+
+.coin-pack--best {
+  --pack-accent: #fbbf24;
+  --pack-glow: rgba(251, 191, 36, 0.4);
+  border-color: color-mix(in srgb, #fbbf24 50%, var(--border));
+}
+
+.coin-pack--bronze {
+  --pack-accent: #d97706;
+}
+
+.coin-pack--silver {
+  --pack-accent: #94a3b8;
+}
+
+.coin-pack--gold {
+  --pack-accent: #eab308;
+}
+
+.coin-pack--platinum {
+  --pack-accent: #a78bfa;
+}
+
+.coin-pack--diamond {
+  --pack-accent: #38bdf8;
+}
+
+.coin-pack--royal {
+  --pack-accent: #c084fc;
+}
+
+.coin-pack--ember {
+  --pack-accent: #fb7185;
+}
+
+.coin-pack--sakura {
+  --pack-accent: #f472b6;
+}
+
+.coin-pack--nebula {
+  --pack-accent: #818cf8;
+}
+
+.coin-pack--eclipse {
+  --pack-accent: #64748b;
+}
+
+.coin-pack--crown {
+  --pack-accent: #fbbf24;
+}
+
+.coin-pack-ribbon {
+  position: absolute;
+  top: 0.65rem;
+  right: -2rem;
+  z-index: 2;
+  width: 8.5rem;
+  padding: 0.28rem 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #1a1028;
+  background: linear-gradient(90deg, var(--pack-accent), color-mix(in srgb, var(--pack-accent) 70%, #fff));
+  transform: rotate(32deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.coin-pack-head {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.coin-pack-tier {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.coin-pack-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.coin-pack-icon-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0.35rem 0 0.15rem;
+}
+
+.coin-pack-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--pack-accent) 45%, transparent);
+  animation: coinPackSpin 18s linear infinite;
+}
+
+@keyframes coinPackSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.coin-pack-icon {
+  width: 46px;
+  height: 46px;
+  color: var(--pack-accent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--pack-glow) 80%, transparent));
+}
+
+.coin-pack-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.coin-pack-coins {
+  font-size: clamp(1.65rem, 3.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--pack-accent), var(--accent-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.coin-pack-coins-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.coin-pack-rate {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--text-muted) 90%, var(--pack-accent));
+}
+
+.coin-pack-price-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  margin-top: 0.15rem;
+}
+
+.coin-pack-price {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+}
+
+.coin-pack--best .coin-pack-price {
+  color: #fcd34d;
+}
+
+.coin-pack-once {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.coin-pack-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  margin-top: 0.55rem;
+  padding: 0.72rem 1rem;
+  border: none;
+  border-radius: 11px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 65%, #6366f1) 100%
+  );
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent-glow) 55%, transparent);
+  transition:
+    filter 0.16s ease,
+    transform 0.16s ease;
+}
+
+.coin-pack--best .coin-pack-buy {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1a1208;
+  box-shadow: 0 8px 22px rgba(251, 191, 36, 0.35);
+}
+
+.coin-pack-buy:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.coin-pack-buy:active {
+  transform: translateY(0);
+}

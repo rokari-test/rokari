@@ -1,0 +1,458 @@
+/* Rokari cinema reader */
+
+.rok-reader {
+  min-height: 100vh;
+  background: #08080c;
+  color: var(--text);
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.rok-comic--scroll {
+  margin: 0 auto;
+  padding: 0.35rem 0 4.5rem;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.rok-reader--sepia {
+  background: #1c1814;
+  color: #e8e0d4;
+}
+
+.rok-reader--light {
+  background: #f5f5f8;
+  color: #1a1a24;
+}
+
+.rok-reader--shell {
+  padding-bottom: 3.5rem;
+}
+
+.rok-reader--shell .rok-comic-shell {
+  padding-top: 0.35rem;
+}
+
+.rok-reader-progress--minimal {
+  height: 2px;
+  opacity: 0.85;
+}
+
+.rok-reader-stage {
+  min-height: 100vh;
+}
+
+.rok-reader-stage--tap {
+  cursor: pointer;
+}
+
+.rok-reader-continue--float {
+  bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 115;
+  max-width: min(92vw, 420px);
+  width: max-content;
+}
+
+.rok-reader-continue-body {
+  min-width: 0;
+}
+
+.rok-reader-continue-body strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14rem;
+}
+
+.rok-reader-continue-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.rok-reader-continue-skip {
+  height: 34px;
+  padding: 0 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, var(--bg-card) 60%, transparent);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.rok-reader-continue-skip:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.rok-reader-continue-go {
+  height: 34px;
+  padding: 0 0.85rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  cursor: pointer;
+  box-shadow: 0 6px 18px var(--accent-glow);
+}
+
+.rok-reader-continue-go:hover {
+  filter: brightness(1.06);
+}
+
+.rok-reader-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 60;
+  background: transparent;
+}
+
+.rok-reader-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: width 0.12s linear;
+}
+
+.rok-reader-bar {
+  position: sticky;
+  top: 3px;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.85rem;
+  background: color-mix(in srgb, #08080c 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-subtle));
+  transition: opacity 0.22s, transform 0.22s;
+}
+
+.rok-reader--light .rok-reader-bar {
+  background: color-mix(in srgb, #f5f5f8 92%, transparent);
+}
+
+.rok-reader-bar--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.rok-reader-back {
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+}
+
+.rok-reader-back:hover {
+  color: var(--accent-soft);
+}
+
+.rok-reader-ticket {
+  text-align: center;
+  min-width: 0;
+}
+
+.rok-reader-ticket-kicker {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.rok-reader-ticket-title {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rok-reader-bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.rok-reader-mode-switch {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
+}
+
+.rok-reader-mode-switch button {
+  padding: 0.28rem 0.55rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.rok-reader-mode-switch button.is-active {
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+}
+
+.rok-reader-icon-btn {
+  padding: 0.32rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rok-reader-icon-btn:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  color: var(--accent-soft);
+}
+
+.rok-reader-bar-actions select {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: inherit;
+  border-radius: 8px;
+  padding: 0.28rem 0.45rem;
+  font-size: 0.72rem;
+}
+
+.rok-reader-hint {
+  margin: 0;
+  padding: 0.3rem 0.85rem;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+}
+
+.rok-reader--minimal .rok-reader-hint {
+  display: none;
+}
+
+.rok-comic-shell {
+  width: 100%;
+}
+
+.rok-comic-shell--wide .rok-comic {
+  max-width: 980px;
+}
+
+.rok-reader-novel {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 6rem;
+  line-height: 1.75;
+}
+
+.rok-reader-novel p {
+  margin: 0 0 1.25rem;
+}
+
+.rok-reader-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, #08080c 92%, transparent);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-subtle));
+  transition: opacity 0.22s, transform 0.22s;
+}
+
+.rok-reader--light .rok-reader-dock {
+  background: color-mix(in srgb, #f5f5f8 95%, transparent);
+}
+
+.rok-reader-dock--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+.rok-reader-dock button,
+.rok-reader-dock a {
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.rok-reader-dock button {
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  color: inherit;
+  cursor: pointer;
+}
+
+.rok-reader-dock a {
+  justify-self: center;
+  color: var(--accent-soft);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.rok-reader-dock-meta {
+  justify-self: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.rok-reader-continue {
+  position: fixed;
+  bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  z-index: 45;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem 0.85rem 0.65rem 1rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 16%, transparent), transparent 55%),
+    color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 22%, transparent);
+  animation: rok-continue-in 0.35s ease;
+}
+
+.rok-reader-continue-kicker {
+  margin: 0 0 0.12rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.rok-reader-continue strong {
+  font-size: 0.88rem;
+}
+
+.rok-reader-continue button:not(.rok-reader-continue-skip):not(.rok-reader-continue-go) {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 0.85rem;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  cursor: pointer;
+}
+
+@keyframes rok-continue-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Empty / locked states */
+.reader-empty {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.reader-empty a {
+  color: var(--accent-soft);
+}
+
+.reader-empty--locked h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+}
+
+.reader-empty--locked p {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reader-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.reader-empty-btn {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .rok-reader-bar {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .rok-reader-ticket {
+    order: -1;
+    grid-column: 1 / -1;
+  }
+
+  .rok-reader-bar-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
+  .rok-reader-continue {
+    flex-direction: column;
+    align-items: stretch;
+    width: min(92vw, 360px);
+  }
+}

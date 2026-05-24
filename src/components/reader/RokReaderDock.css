@@ -1,0 +1,363 @@
+/* Rokari unified reader dock — full width, no clipping */
+
+.rok-dock-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  padding-inline: max(0.5rem, env(safe-area-inset-left, 0px)) max(0.5rem, env(safe-area-inset-right, 0px));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rok-dock-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.rok-dock {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  width: min(100%, 640px);
+  min-height: 2.65rem;
+  padding: 0.28rem 0.32rem 0.28rem 0.38rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border-subtle));
+  background:
+    radial-gradient(
+      ellipse 90% 160% at 8% 0%,
+      color-mix(in srgb, var(--accent) 12%, transparent),
+      transparent 55%
+    ),
+    color-mix(in srgb, var(--bg-elevated) 96%, transparent);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 10px 32px color-mix(in srgb, var(--accent) 14%, transparent),
+    0 4px 18px color-mix(in srgb, #000 50%, transparent);
+}
+
+.rok-dock-wrap.is-pinned .rok-dock {
+  border-color: color-mix(in srgb, var(--accent) 44%, var(--border-subtle));
+  box-shadow:
+    0 10px 32px var(--accent-glow),
+    0 4px 18px color-mix(in srgb, #000 50%, transparent);
+}
+
+/* ── Nav + progress (inline row) ── */
+.rok-dock-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.22rem;
+  flex-shrink: 0;
+  padding-right: 0.15rem;
+}
+
+.rok-dock-nav-btn {
+  flex-shrink: 0;
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--bg-card) 60%, transparent);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.rok-dock-nav-btn:hover {
+  color: var(--accent-soft);
+  background: var(--accent-dim);
+}
+
+.rok-dock-nav-btn:active {
+  transform: scale(0.92);
+}
+
+.rok-dock-track {
+  position: relative;
+  width: 3.5rem;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--bg-hover) 88%, transparent);
+  flex-shrink: 0;
+}
+
+.rok-dock-track-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+.rok-dock-track-input {
+  position: absolute;
+  inset: -8px 0;
+  width: 100%;
+  height: calc(100% + 16px);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rok-dock-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 2.1rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.rok-dock-meta strong {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.rok-dock-meta span {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--accent-soft);
+}
+
+.rok-dock-sep {
+  flex-shrink: 0;
+  width: 1px;
+  align-self: stretch;
+  margin-block: 0.35rem;
+  background: color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+/* ── Tools (scroll, fully visible) ── */
+.rok-dock-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding-inline: 0.08rem;
+}
+
+.rok-dock-tools::-webkit-scrollbar {
+  display: none;
+}
+
+.rok-dock-tool,
+.rok-dock-tool--link {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.rok-dock-tool:hover,
+.rok-dock-tool--link:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg-hover) 80%, transparent);
+}
+
+.rok-dock-tool.is-active {
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(145deg, var(--accent-soft), var(--accent));
+  box-shadow: 0 3px 12px var(--accent-glow);
+}
+
+.rok-dock-tool.is-active .rok-dock-icon {
+  color: var(--color-primary-text, #fff);
+}
+
+.rok-dock-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.rok-dock-badge {
+  position: absolute;
+  top: -0.1rem;
+  right: -0.15rem;
+  min-width: 0.85rem;
+  height: 0.85rem;
+  padding: 0 0.18rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(145deg, var(--accent-soft), var(--accent));
+  color: var(--color-primary-text, #fff);
+  font-size: 0.5rem;
+  font-weight: 800;
+  line-height: 0.85rem;
+  box-shadow: 0 2px 6px var(--accent-glow);
+  z-index: 2;
+}
+
+.rok-dock-dot {
+  position: absolute;
+  top: 0.12rem;
+  left: 0.12rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--bg-elevated) 92%, transparent),
+    0 0 8px color-mix(in srgb, #ef4444 55%, transparent);
+  z-index: 1;
+}
+
+.rok-dock-tool:has(.rok-dock-badge) .rok-dock-dot {
+  top: auto;
+  bottom: 0.1rem;
+  left: 0.1rem;
+}
+
+.rok-dock-bookmark .chapter-bookmark-btn--icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.rok-dock-bookmark .chapter-bookmark-btn--icon:hover {
+  background: color-mix(in srgb, var(--bg-hover) 80%, transparent);
+  color: var(--text);
+}
+
+.rok-dock-bookmark .chapter-bookmark-btn--icon.is-saved {
+  color: var(--accent-soft);
+}
+
+/* ── Chapter like (dock) ── */
+.rok-dock-like {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  margin-left: 0.05rem;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.rok-dock-like-count {
+  position: absolute;
+  top: -0.2rem;
+  right: -0.25rem;
+  min-width: 0.85rem;
+  height: 0.85rem;
+  padding: 0 0.15rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(145deg, #fb7185, #ec4899);
+  color: #fff;
+  font-size: 0.48rem;
+  font-weight: 800;
+  line-height: 0.85rem;
+  box-shadow: 0 2px 6px color-mix(in srgb, #ec4899 40%, transparent);
+}
+
+.rok-dock-like:hover {
+  color: #f472b6;
+  background: color-mix(in srgb, #f472b6 12%, transparent);
+}
+
+.rok-dock-like.is-liked {
+  color: #fff;
+  background: linear-gradient(145deg, #fb7185, #ec4899);
+  box-shadow: 0 3px 12px color-mix(in srgb, #ec4899 35%, transparent);
+}
+
+.rok-dock-like.is-liked .rok-dock-like-count {
+  background: #fff;
+  color: #ec4899;
+  box-shadow: none;
+}
+
+.rok-dock-pin {
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  margin-left: 0.05rem;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--bg-card) 55%, transparent);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.rok-dock-pin:hover {
+  color: var(--accent-soft);
+  background: var(--accent-dim);
+}
+
+.rok-dock-pin.is-pinned {
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(145deg, var(--accent-soft), var(--accent));
+  box-shadow: 0 3px 12px var(--accent-glow);
+}
+
+@media (max-width: 480px) {
+  .rok-dock {
+    min-height: 2.5rem;
+    padding-inline: 0.28rem;
+  }
+
+  .rok-dock-track {
+    width: 2.75rem;
+  }
+
+  .rok-dock-meta span {
+    display: none;
+  }
+
+  .rok-dock-tool,
+  .rok-dock-tool--link,
+  .rok-dock-pin {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rok-dock-wrap,
+  .rok-dock-track-fill {
+    transition: none;
+  }
+}

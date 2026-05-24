@@ -1,0 +1,22 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.layout-main {
+  flex: 1;
+  padding-top: var(--header-h);
+}
+
+.layout-main--reader {
+  padding-top: 0;
+  overflow: visible;
+  min-height: 100vh;
+}
+
+.layout-main--bottom-nav {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+}

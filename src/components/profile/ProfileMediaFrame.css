@@ -1,0 +1,94 @@
+.profile-media-frame-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.profile-media-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border-subtle));
+  background: var(--bg);
+}
+
+.profile-media-frame--avatar {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.profile-media-frame--banner {
+  width: 100%;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.profile-media-frame--editable {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.profile-media-frame--drag {
+  cursor: grabbing;
+}
+
+.profile-media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.profile-media-frame-hint {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  padding: 0.18rem 0.42rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #fff;
+  background: color-mix(in srgb, black 55%, transparent);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.profile-media-frame-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.profile-media-frame-tools button {
+  min-height: 1.75rem;
+  padding: 0 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-media-frame-tools button:hover {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border-subtle));
+}
+
+.profile-media-frame-coords {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.profile-media-frame--avatar .profile-media-frame-hint {
+  font-size: 0.5rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+}

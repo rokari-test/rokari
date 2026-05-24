@@ -1,0 +1,265 @@
+.feed-chapter {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feed-chapter + .feed-chapter {
+  border-top: 1px solid color-mix(in srgb, var(--border-subtle) 45%, transparent);
+}
+
+.feed-chapter__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding: 0.22rem 0.15rem;
+  min-height: 30px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.16s ease;
+}
+
+.feed-chapter__link:hover {
+  background: color-mix(in srgb, var(--accent-dim) 85%, transparent);
+}
+
+.feed-chapter--latest .feed-chapter__link {
+  margin: 0 -0.08rem;
+  padding: 0.28rem 0.22rem 0.28rem 0.38rem;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-dim) 95%, transparent) 0%,
+    transparent 88%
+  );
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+}
+
+.feed-chapter--latest .feed-chapter__link:hover {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-dim) 100%, transparent) 0%,
+    color-mix(in srgb, var(--accent-dim) 35%, transparent) 100%
+  );
+}
+
+.feed-chapter--latest .feed-chapter__name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.feed-chapter__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.feed-chapter__lock {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--success) 18%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+}
+
+.feed-chapter__lock--wait {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.feed-chapter__lock svg {
+  width: 10px;
+  height: 10px;
+}
+
+.feed-chapter__name {
+  min-width: 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--text-muted) 88%, transparent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.14s;
+}
+
+.feed-chapter__link:hover .feed-chapter__name {
+  color: var(--accent-soft);
+}
+
+.feed-chapter__time {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--text-muted) 75%, transparent);
+  white-space: nowrap;
+}
+
+.feed-chapter--latest .feed-chapter__time {
+  color: var(--text-muted);
+}
+
+/* Right side: subscription timer + coins + lock */
+.feed-chapter__access {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  max-width: 58%;
+}
+
+/* Feed pills — same logic as series page, sized for cards */
+.feed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 28px;
+  padding: 0 0.45rem 0 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 77, 141, 0.32);
+  background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.12s;
+}
+
+.feed-pill:hover {
+  border-color: rgba(255, 77, 141, 0.55);
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+.feed-pill--wait {
+  max-width: 118px;
+}
+
+.feed-pill--coins {
+  border-color: rgba(255, 77, 141, 0.45);
+  background: color-mix(in srgb, var(--accent-dim) 60%, transparent);
+  padding-right: 0.55rem;
+}
+
+.feed-pill__icon {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 77, 141, 0.16);
+  color: var(--accent-soft);
+}
+
+.feed-pill__icon svg {
+  width: 11px;
+  height: 11px;
+}
+
+.feed-pill__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.05;
+  min-width: 0;
+}
+
+.feed-pill__time {
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.feed-pill__meta {
+  font-size: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.feed-pill--coins .feed-pill__body strong {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+  line-height: 1;
+}
+
+.feed-pill--coins .feed-pill__meta {
+  font-size: 0.52rem;
+  color: color-mix(in srgb, var(--accent-soft) 80%, var(--text-muted));
+}
+
+/* Compact variant */
+.chapter-update-row {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.chapter-update-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.chapter-update-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.chapter-update-time {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.chapter-update-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .feed-chapter__access {
+    max-width: 62%;
+    gap: 0.25rem;
+  }
+
+  .feed-pill {
+    height: 26px;
+  }
+
+  .feed-pill--wait {
+    max-width: 100px;
+  }
+
+  .feed-pill__time {
+    font-size: 0.58rem;
+  }
+
+  .feed-pill--coins .feed-pill__body strong {
+    font-size: 0.75rem;
+  }
+}

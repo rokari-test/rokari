@@ -1,0 +1,149 @@
+/* Wallet-style chips for chapter price / early-access timer */
+
+.access-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.5rem 0.3rem 0.35rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.access-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.access-chip--coins {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border-subtle));
+}
+
+.access-chip--timer {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border-subtle));
+  min-width: 72px;
+}
+
+.access-chip-text--clock strong {
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+}
+
+.access-chip--read {
+  padding: 0.3rem 0.4rem;
+  min-width: 36px;
+  justify-content: center;
+}
+
+.access-chip-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.access-chip--timer .access-chip-icon {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.access-chip-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.access-chip-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.access-chip-text strong {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+  letter-spacing: -0.02em;
+}
+
+.access-chip-text > span {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Inline in homepage feed rows */
+.access-chip--compact {
+  padding: 0.12rem 0.38rem 0.12rem 0.22rem;
+  gap: 0.28rem;
+  min-width: 0;
+}
+
+.access-chip--compact.access-chip--timer {
+  min-width: 0;
+}
+
+.access-chip--compact .access-chip-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.access-chip--compact .access-chip-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.access-chip--compact .access-chip-text {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.access-chip--compact .access-chip-text strong {
+  font-size: 0.68rem;
+}
+
+.access-chip--compact .access-chip-text > span {
+  font-size: 0.58rem;
+}
+
+.access-chip--compact .access-chip-text--clock strong {
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+}
+
+/* Rokari reel dock — fixed-size chips in chapter rows */
+.access-chip--dock.access-chip--compact {
+  padding: 0 0.45rem 0 0.35rem;
+  gap: 0.3rem;
+}
+
+.access-chip--dock.access-chip--compact .access-chip-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.access-chip--dock.access-chip--compact .access-chip-text strong {
+  font-size: 0.72rem;
+}
+
+.access-chip--dock.access-chip--compact .access-chip-text > span {
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.access-chip--dock.access-chip--compact .access-chip-text--clock strong {
+  font-size: 0.58rem;
+}

@@ -1,0 +1,117 @@
+.series-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s;
+}
+
+.series-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.series-card:hover {
+  transform: translateY(-4px);
+}
+
+.series-card-cover {
+  position: relative;
+  aspect-ratio: 5 / 7;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.series-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.series-card-type {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.series-card-type--manhwa {
+  color: #7dd3fc;
+}
+
+.series-card-type--novel {
+  color: #c4b5fd;
+}
+
+.series-card-status {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.series-card-status--ongoing {
+  color: var(--success);
+}
+
+.series-card-status--completed {
+  color: var(--accent-hover);
+}
+
+.series-card-status--hiatus {
+  color: var(--warning);
+}
+
+.series-card-rating {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffd666;
+}
+
+.series-card-info h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.series-card-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.series-card--featured .series-card-cover {
+  aspect-ratio: 16 / 9;
+}
+
+.series-card--featured .series-card-info h3 {
+  font-size: 1.1rem;
+}

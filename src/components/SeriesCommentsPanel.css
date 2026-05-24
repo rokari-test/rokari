@@ -1,0 +1,543 @@
+.rok-comments {
+  padding: 0.35rem 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rok-comments--compact {
+  padding-top: 0;
+  gap: 0.75rem;
+}
+
+.rok-comments--compact .rok-comments-compose {
+  margin-top: 0;
+}
+
+.rok-comments--split {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.rok-comments-compose-wrap {
+  flex-shrink: 0;
+  padding-bottom: 0.65rem;
+}
+
+.rok-comments-feed {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 30%, transparent) transparent;
+  padding-right: 0.15rem;
+}
+
+.rok-comments-feed::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rok-comments-feed::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: var(--radius-pill);
+}
+
+.rok-comments-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border-subtle));
+}
+
+.rok-comments-eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.rok-comments-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.rok-comments-count {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-subtle));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.rok-comments-compose {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border-subtle));
+  background: color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+}
+
+.rok-comments-compose-user {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.rok-comments-compose-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.rok-comments-compose-name {
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.rok-comments-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.user-avatar.rok-comments-avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 0.85rem;
+}
+
+.user-avatar.rok-comments-avatar.rok-comments-avatar--sm {
+  width: 28px;
+  height: 28px;
+  font-size: 0.72rem;
+}
+
+.rok-comments-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 92px;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-card) 92%, transparent);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  resize: vertical;
+  caret-color: var(--accent-soft);
+}
+
+.rok-comments--split .rok-comments-input {
+  min-height: 72px;
+  resize: none;
+}
+
+.rok-comments-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.rok-comments-error {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #f87171;
+}
+
+.rok-comments-compose-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rok-comments-limit {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.rok-comments-post {
+  height: 36px;
+  padding: 0 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  cursor: pointer;
+}
+
+.rok-comments-post:disabled {
+  opacity: 1;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-hover) 85%, transparent);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.rok-comments-post:not(:disabled):hover {
+  filter: brightness(1.06);
+}
+
+.rok-comments-signin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 25%, var(--border-subtle));
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.rok-comments-signin-link {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  text-decoration: none;
+}
+
+.rok-comments-empty {
+  margin: 0;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.rok-comments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.rok-comments-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.8rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+}
+
+.rok-comments-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.rok-comments-author {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.rok-comments-author:hover {
+  color: var(--accent);
+}
+
+.rok-comments-time {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.rok-comments-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.rok-comments-delete {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rok-comments-delete:hover {
+  color: #f87171;
+  border-color: color-mix(in srgb, #f87171 40%, var(--border));
+}
+
+/* Left rail — larger reader comments */
+.rok-comments--rail .rok-comments-compose {
+  padding: 1rem;
+  gap: 0.75rem;
+}
+
+.rok-comments--rail .rok-comments-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 0.95rem;
+}
+
+.rok-comments--rail .rok-comments-compose-name {
+  font-size: 0.92rem;
+}
+
+.rok-comments--rail .rok-comments-input {
+  min-height: 108px;
+  padding: 0.85rem 0.95rem;
+  font-size: 0.95rem;
+}
+
+.rok-comments--rail .rok-comments-post {
+  height: 40px;
+  padding: 0 1.1rem;
+  font-size: 0.85rem;
+}
+
+.rok-comments--rail .rok-comments-item {
+  padding: 1rem;
+  gap: 0.85rem;
+}
+
+.rok-comments--rail .rok-comments-text {
+  font-size: 0.95rem;
+}
+
+.rok-comments--rail .rok-comments-author {
+  font-size: 0.88rem;
+}
+
+.rok-comments--rail .rok-comments-empty {
+  padding: 2rem 1rem;
+  font-size: 0.92rem;
+}
+
+.rok-comments--rail .rok-comments-signin {
+  padding: 1rem 1.1rem;
+  font-size: 0.92rem;
+}
+
+.rok-comments-avatar--sm {
+  width: 28px;
+  height: 28px;
+  font-size: 0.72rem;
+}
+
+.rok-comment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+.rok-comment-vote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-card) 80%, transparent);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+
+.rok-comment-vote:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--border) 100%, transparent);
+  background: var(--bg-hover);
+}
+
+.rok-comment-vote:active {
+  transform: scale(0.96);
+}
+
+.rok-comment-vote-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
+.rok-comment-vote-icon-flip {
+  display: inline-flex;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+}
+
+.rok-comment-vote-icon-flip .rok-comment-vote-icon {
+  display: block;
+}
+
+.rok-comment-vote-count {
+  min-width: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.rok-comment-vote--like.is-active {
+  color: var(--color-primary-text, #fff);
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.rok-comment-vote--dislike.is-active {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, #fca5a5, #ef4444);
+  box-shadow: 0 4px 12px color-mix(in srgb, #ef4444 35%, transparent);
+}
+
+.rok-comment-reply-btn {
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-card) 80%, transparent);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.rok-comment-reply-btn:hover {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: var(--accent-dim);
+}
+
+.rok-comment-reply-form {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.rok-comments-input--reply {
+  min-height: 64px;
+  resize: none;
+}
+
+.rok-comment-reply-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.rok-comment-reply-cancel {
+  height: 32px;
+  padding: 0 0.65rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rok-comment-login-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.rok-comment-login-hint a {
+  color: var(--accent-soft);
+  font-weight: 700;
+}
+
+.rok-comment-replies {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0 0 0 0.65rem;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 18%, var(--border-subtle));
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.rok-comment-replies--scroll {
+  --rok-reply-visible: 3;
+  --rok-reply-row: 5.5rem;
+  max-height: calc(
+    var(--rok-reply-row) * var(--rok-reply-visible) + 0.55rem * (var(--rok-reply-visible) - 1)
+  );
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.2rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 28%, transparent) transparent;
+}
+
+.rok-comment-replies--scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rok-comment-replies--scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: var(--radius-pill);
+}
+
+.rok-comment-reply {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.rok-comment-reply-body {
+  min-width: 0;
+}

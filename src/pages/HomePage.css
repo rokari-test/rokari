@@ -1,0 +1,16 @@
+.home {
+  min-height: calc(100dvh - var(--header-h));
+  padding-bottom: 2.5rem;
+  background: var(--bg);
+}
+
+.home-sections {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+/* Section titles respect gutter; carousels bleed to site max width */
+.home-sections .home-section-head,
+.home-sections .period-tabs {
+  padding-inline: 0;
+}

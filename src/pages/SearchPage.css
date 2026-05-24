@@ -1,0 +1,17 @@
+.search-page {
+  padding: 2rem 0 3rem;
+}
+
+.search-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+}
+
+.search-header p {
+  margin: 0 0 1.5rem;
+  color: var(--text-muted);
+}
+
+.search-empty {
+  color: var(--text-muted);
+}

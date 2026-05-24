@@ -1,0 +1,160 @@
+/* Carousel poster card — cover-first, info in bottom gradient */
+
+.manhwa-card {
+  flex: 0 0 var(--card-w);
+  scroll-snap-align: start;
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.24);
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.manhwa-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.manhwa-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-glow) 45%, transparent),
+    0 16px 40px rgba(0, 0, 0, 0.38);
+}
+
+.manhwa-card-media {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.manhwa-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.manhwa-card:hover .manhwa-card-media img {
+  transform: scale(1.08);
+}
+
+.manhwa-card-lang {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  padding: 0.14rem 0.38rem;
+  border-radius: 5px;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.manhwa-card-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  padding: 2.75rem 0.65rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 28%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+.manhwa-card-title {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.18s;
+}
+
+.manhwa-card:hover .manhwa-card-title {
+  color: var(--accent-soft);
+}
+
+.manhwa-card-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--text-muted) 95%, var(--text));
+}
+
+.manhwa-card-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+  color: #ffd666;
+  font-weight: 800;
+}
+
+.manhwa-card-rating svg {
+  width: 10px;
+  height: 10px;
+}
+
+.manhwa-card-dot {
+  opacity: 0.55;
+}
+
+.manhwa-card-live {
+  color: var(--success);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.58rem;
+}
+
+.manhwa-card-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text-muted) 90%, var(--text));
+}
+
+.manhwa-card-source::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--source-color, var(--accent));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--source-color, var(--accent)) 55%, transparent);
+}
+
+@media (max-width: 640px) {
+  .manhwa-card-title {
+    font-size: 0.78rem;
+  }
+}

@@ -1,0 +1,504 @@
+/* Rokari Chapter Reel — cinema ticket rows */
+
+.rok-reel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0 0 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+}
+
+.rok-reel-list::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 35%, transparent) 12%,
+    color-mix(in srgb, var(--accent) 35%, transparent) 88%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.rok-reel-item {
+  position: relative;
+}
+
+.rok-reel-item::before {
+  content: '';
+  position: absolute;
+  left: -0.52rem;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-card);
+  border: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  z-index: 1;
+}
+
+.rok-reel-ticket {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'stub body dock';
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  width: 100%;
+  min-height: 78px;
+  padding: 0.65rem 0.75rem 0.65rem 0;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-subtle));
+  background:
+    linear-gradient(105deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 42%),
+    color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.rok-reel-ticket::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, color-mix(in srgb, var(--accent) 6%, transparent) 50%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.rok-reel-ticket:hover {
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-1px);
+}
+
+.rok-reel-ticket:hover::after {
+  opacity: 1;
+}
+
+.rok-reel-ticket--current {
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
+  background:
+    linear-gradient(105deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
+    color-mix(in srgb, var(--bg-elevated) 96%, transparent);
+  box-shadow:
+    inset 3px 0 0 var(--accent),
+    0 8px 24px var(--accent-glow);
+}
+
+.rok-reel-ticket--current .rok-reel-item::before,
+.rok-reel-item:has(.rok-reel-ticket--current)::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.rok-reel-ticket--locked {
+  border-color: color-mix(in srgb, var(--color-destructive) 22%, var(--border-subtle));
+  background:
+    linear-gradient(105deg, color-mix(in srgb, var(--color-destructive) 4%, transparent), transparent 50%),
+    color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+}
+
+.rok-reel-ticket--locked .rok-reel-title {
+  color: color-mix(in srgb, var(--text) 72%, var(--text-muted));
+}
+
+.rok-reel-ticket--early {
+  /* same 3-column layout as other rows */
+}
+
+.rok-reel-dock {
+  grid-area: dock;
+  display: grid;
+  grid-template-columns: minmax(92px, 1fr) 48px minmax(92px, 1fr) 36px;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.rok-reel-dock-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+}
+
+.rok-reel-dock-cell--status {
+  justify-content: flex-start;
+}
+
+.rok-reel-dock-cell--time {
+  flex-direction: column;
+  gap: 0.18rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.rok-reel-dock-cell--time strong {
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.rok-reel-dock-cell--time span {
+  font-size: 0.56rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rok-reel-dock-plan {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.rok-reel-dock-cell--action {
+  justify-content: center;
+}
+
+.rok-reel-dock-cell--mark {
+  justify-content: flex-end;
+}
+
+.rok-reel-dock-spacer {
+  display: block;
+  width: 100%;
+  height: 36px;
+}
+
+.rok-reel-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  width: 100%;
+  max-width: 92px;
+  height: 36px;
+  padding: 0 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.rok-reel-pill svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.rok-reel-pill--open {
+  color: #86efac;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+}
+
+.rok-reel-pill--locked {
+  color: #fca5a5;
+  background: color-mix(in srgb, var(--color-destructive) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-destructive) 28%, transparent);
+}
+
+.rok-reel-go {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.rok-reel-go svg {
+  width: 16px;
+  height: 16px;
+}
+
+.rok-reel-ticket:hover .rok-reel-go {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.rok-reel-dock .access-chip--dock {
+  width: 100%;
+  max-width: 92px;
+  height: 36px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.rok-reel-dock-cell--mark .chapter-bookmark-btn--row {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.rok-reel-stub {
+  grid-area: stub;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  width: 52px;
+  min-height: 58px;
+  margin-left: 0.35rem;
+  padding: 0.35rem 0.25rem;
+  border-radius: 10px 0 0 10px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-right: none;
+  flex-shrink: 0;
+}
+
+.rok-reel-stub::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 4px;
+  bottom: 4px;
+  width: 10px;
+  background: radial-gradient(circle at 50% 50%, var(--bg-elevated) 3px, transparent 3.5px) center / 10px 9px repeat-y;
+  pointer-events: none;
+}
+
+.rok-reel-stub-num {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent-soft);
+}
+
+.rok-reel-stub-kind {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rok-reel-body {
+  grid-area: body;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.rok-reel-body-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rok-reel-kicker {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rok-reel-chip {
+  padding: 0.12rem 0.42rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rok-reel-chip--here {
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+}
+
+.rok-reel-chip--new {
+  color: #fdba74;
+  background: color-mix(in srgb, #fb923c 14%, transparent);
+  border: 1px solid color-mix(in srgb, #fb923c 28%, transparent);
+}
+
+.rok-reel-title-row {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.rok-reel-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.rok-reel-title-text {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rok-reel-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.rok-reel-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.22rem 0.48rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+.rok-reel-stat svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.rok-reel-stat strong {
+  font-size: 0.84rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.rok-reel-stat--likes {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: var(--accent-soft);
+}
+
+.rok-reel-stat--likes strong {
+  color: var(--accent);
+}
+
+.rok-reel-stat--comments {
+  background: color-mix(in srgb, var(--color-secondary) 32%, transparent);
+  border-color: color-mix(in srgb, var(--color-secondary) 45%, transparent);
+  color: color-mix(in srgb, var(--color-secondary) 55%, var(--text));
+}
+
+.rok-reel-stat--comments strong {
+  color: color-mix(in srgb, var(--color-secondary) 70%, var(--accent-soft));
+}
+
+.rok-reel-ticket:hover .rok-reel-title-text {
+  color: var(--accent-soft);
+}
+
+.rok-reel-uploader {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.rok-reel-avatar {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent-soft);
+  font-size: 0.58rem;
+  font-weight: 800;
+}
+
+.rok-reel-uploader-name {
+  color: var(--accent-soft);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 639px) {
+  .rok-reel-list {
+    padding-left: 0;
+  }
+
+  .rok-reel-list::before,
+  .rok-reel-item::before {
+    display: none;
+  }
+
+  .rok-reel-ticket {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'stub body'
+      'dock dock';
+    gap: 0.5rem 0.65rem;
+    padding: 0.55rem 0.65rem 0.55rem 0;
+    min-height: 0;
+  }
+
+  .rok-reel-dock {
+    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 36px;
+    width: 100%;
+    padding-left: 0.35rem;
+  }
+
+  .rok-reel-stub {
+    width: 46px;
+    min-height: 52px;
+  }
+
+  .rok-reel-stub-num {
+    font-size: 0.95rem;
+  }
+
+  .rok-reel-title {
+    font-size: 0.86rem;
+  }
+}

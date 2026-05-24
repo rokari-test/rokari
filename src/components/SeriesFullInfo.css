@@ -1,0 +1,476 @@
+/* Rokari Full info tab */
+
+.rok-full {
+  padding: 0.35rem 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rok-full-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border-subtle));
+}
+
+.rok-full-eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.rok-full-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.rok-full-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rok-full-saved {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #86efac;
+}
+
+.rok-full-btn {
+  height: 34px;
+  padding: 0 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rok-full-btn--primary {
+  color: var(--color-primary-text, #fff);
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+}
+
+.rok-full-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.rok-full-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rok-full-section-head h4 {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.rok-full-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-card));
+  color: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border-subtle));
+}
+
+.rok-full-sub {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rok-full-rating-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+@media (min-width: 640px) {
+  .rok-full-rating-cards {
+    max-width: 420px;
+  }
+}
+
+.rok-full-rating-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.35rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border-subtle));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 6%, transparent), transparent 55%),
+    color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+}
+
+.rok-full-rating-label {
+  width: 100%;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rok-full-rating-card strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.rok-full-rating-scale {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rok-full-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-subtle));
+  background: color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+}
+
+.rok-full-bar-row {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr 2rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rok-full-bar-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.rok-full-bar-track {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  overflow: hidden;
+}
+
+.rok-full-bar-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+}
+
+.rok-full-bar-count {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.rok-full-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+@media (min-width: 640px) {
+  .rok-full-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .rok-full-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.rok-full-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 56px;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.rok-full-link-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+  transform: translateY(-1px);
+}
+
+.rok-full-link-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.rok-full-link-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.rok-full-link-body strong {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rok-full-link-body span {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rok-full-titles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.rok-full-title-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-subtle));
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  transition: border-color 0.15s;
+}
+
+.rok-full-title-row:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+
+.rok-full-title-lang {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.22rem 0.45rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+
+.rok-full-title-body {
+  min-width: 0;
+}
+
+.rok-full-title-type {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.12rem;
+}
+
+.rok-full-title-text {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.rok-full-title-primary {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-text, #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+}
+
+/* Editor fields */
+.rok-full-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rok-full-fields-group {
+  margin: 0;
+  padding: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border-subtle));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+}
+
+.rok-full-fields-group legend {
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.rok-full-fields-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
+.rok-full-fields-row label,
+.rok-full-fields-dist label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rok-full-fields-row input,
+.rok-full-fields-dist input,
+.rok-full-fields-item input {
+  height: 36px;
+  padding: 0 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.rok-full-fields-hint {
+  margin: 0 0 0.45rem;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.rok-full-fields-dist {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+@media (min-width: 640px) {
+  .rok-full-fields-dist {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+}
+
+.rok-full-fields-list {
+  list-style: none;
+  margin: 0 0 0.55rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.rok-full-fields-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rok-full-fields-lang {
+  width: 3.5rem !important;
+  text-align: center;
+}
+
+.rok-full-fields-grow {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.rok-full-fields-check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.3rem !important;
+  font-size: 0.68rem !important;
+  white-space: nowrap;
+}
+
+.rok-full-fields-check input {
+  width: auto;
+  height: auto;
+}
+
+.rok-full-fields-remove {
+  width: 32px;
+  height: 32px;
+  border: 1px solid color-mix(in srgb, var(--color-destructive) 30%, var(--border));
+  border-radius: 8px;
+  background: transparent;
+  color: #fca5a5;
+  cursor: pointer;
+}
+
+.rok-full-fields-add {
+  height: 34px;
+  padding: 0 0.75rem;
+  border-radius: 10px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: transparent;
+  color: var(--accent-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rok-full-fields-add:hover {
+  background: var(--accent-dim);
+}

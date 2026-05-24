@@ -1,0 +1,83 @@
+﻿.bookmark-btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.bookmark-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.bookmark-btn--active {
+  color: #ffd666;
+  border-color: rgba(255, 214, 102, 0.4);
+  background: rgba(255, 214, 102, 0.08);
+}
+
+.bookmark-btn--rokari {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.bookmark-btn--rokari:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  color: var(--accent-soft);
+}
+
+.bookmark-btn--rokari-active {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent-soft);
+}
+
+.bookmark-btn--kagane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.bookmark-btn--kagane:hover {
+  border-color: rgba(255, 77, 141, 0.35);
+  color: var(--accent-soft);
+}
+
+.bookmark-btn--kagane-active {
+  border-color: rgba(255, 77, 141, 0.45);
+  background: var(--accent-dim);
+  color: var(--accent-soft);
+}
+
+/* Styled inside .sqv-dialog â€” base hooks only */
+.bookmark-btn--sqv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+

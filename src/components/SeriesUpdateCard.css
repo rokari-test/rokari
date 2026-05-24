@@ -1,0 +1,272 @@
+/* Recently Updated — premium feed tile */
+
+.feed-tile {
+  --feed-cover-w: 116px;
+  position: relative;
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--bg-card) 96%, #fff 4%) 0%,
+      color-mix(in srgb, var(--bg-elevated) 88%, var(--accent-dim)) 100%
+    );
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #fff 7%, transparent) inset,
+    0 6px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.feed-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 80% at 0% 40%,
+    color-mix(in srgb, var(--accent) 11%, transparent),
+    transparent 58%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.feed-tile:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #fff 9%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, var(--accent-glow) 50%, transparent),
+    0 16px 40px rgba(0, 0, 0, 0.34);
+}
+
+.feed-tile-cover-wrap {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 var(--feed-cover-w);
+  width: var(--feed-cover-w);
+  align-self: stretch;
+}
+
+.feed-tile-cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 132px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in srgb, #fff 12%, transparent) inset;
+  transition: box-shadow 0.24s ease;
+}
+
+.feed-tile-cover img {
+  width: 100%;
+  height: 100%;
+  min-height: 132px;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feed-tile-cover-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    color-mix(in srgb, var(--bg) 75%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+.feed-tile:hover .feed-tile-cover img {
+  transform: scale(1.07);
+}
+
+.feed-tile:hover .feed-tile-cover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 24px color-mix(in srgb, var(--accent-glow) 40%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 35%, transparent) inset;
+}
+
+.feed-tile-type {
+  position: absolute;
+  top: 0.32rem;
+  left: 0.32rem;
+  z-index: 2;
+  padding: 0.12rem 0.34rem;
+  border-radius: 4px;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--text);
+}
+
+.feed-tile-type--manhwa {
+  color: #7dd3fc;
+}
+
+.feed-tile-type--novel {
+  color: #c4b5fd;
+}
+
+.feed-tile-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.feed-tile-head {
+  margin: 0;
+}
+
+.feed-tile-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.feed-tile-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.feed-tile-title a {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.18s;
+}
+
+.feed-tile:hover .feed-tile-title a {
+  color: var(--accent-soft);
+}
+
+.feed-tile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  margin-top: 0.06rem;
+  padding: 0.1rem 0.36rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--bg-hover) 65%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 90%, transparent);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.feed-tile-status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.feed-tile-status--ongoing {
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 25%, transparent);
+  background: color-mix(in srgb, var(--success) 10%, transparent);
+}
+
+.feed-tile-status--completed {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: var(--accent-dim);
+}
+
+.feed-tile-status--hiatus {
+  color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning) 25%, transparent);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+}
+
+.feed-tile-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.22rem;
+}
+
+.feed-tile-rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.1rem 0.38rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 70%, transparent);
+}
+
+.feed-tile-star {
+  color: #ffd666;
+  font-size: 0.625rem;
+}
+
+.feed-tile-chapters-panel {
+  flex: 1;
+  padding: 0.2rem 0.28rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg) 42%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 65%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.feed-tile-chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .feed-tile {
+    --feed-cover-w: 104px;
+  }
+
+  .feed-tile-cover,
+  .feed-tile-cover img {
+    min-height: 124px;
+  }
+
+  .feed-tile-title {
+    font-size: 0.78rem;
+  }
+}

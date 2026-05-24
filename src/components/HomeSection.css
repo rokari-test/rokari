@@ -1,0 +1,137 @@
+.home-section {
+  padding: 1.5rem 0 0.75rem;
+}
+
+.home-section + .home-section {
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 0.25rem;
+}
+
+.home-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-inline: 0.1rem;
+  flex-wrap: wrap;
+}
+
+.home-section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.home-section-toggle h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.home-section-chevron {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s, border-color 0.2s;
+  margin-top: -0.2rem;
+}
+
+.home-section--collapsed .home-section-chevron {
+  transform: rotate(-45deg);
+  margin-top: 0.05rem;
+}
+
+.home-section-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.home-section-more {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.home-section-more:hover {
+  color: var(--accent);
+}
+
+.home-section-body {
+  animation: homeSectionIn 0.25s ease;
+}
+
+@keyframes homeSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.period-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.22rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
+  border: 1px solid var(--border-subtle);
+}
+
+.period-tab {
+  padding: 0.38rem 0.75rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  transition: color 0.15s, background 0.15s;
+}
+
+.period-tab:hover {
+  color: var(--text);
+}
+
+.period-tab--active {
+  color: var(--text);
+  background: var(--bg-hover);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 720px) {
+  .home-section-head {
+    align-items: flex-start;
+  }
+
+  .home-section-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+  }
+
+  .period-tabs {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+  }
+}

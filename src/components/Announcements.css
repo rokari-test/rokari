@@ -1,0 +1,137 @@
+.announcements {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.15rem;
+}
+
+.announcements-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.5rem 0.65rem;
+}
+
+.announcements-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fcd34d;
+}
+
+.announcements-all {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.announcements-all:hover {
+  text-decoration: underline;
+}
+
+.announcement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.announcement:last-child {
+  border-bottom: none;
+}
+
+.announcement-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.announcement-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.announcement-top {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.announcement-read-more {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+}
+
+.announcement-title {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+}
+
+.announcement-title:hover {
+  color: var(--accent-soft);
+}
+
+.announcement-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.announcement-preview {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.announcement--open .announcement-preview {
+  -webkit-line-clamp: unset;
+  color: var(--text-muted);
+}
+
+.announcement-actions {
+  display: flex;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.announcement-action {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.announcement-action:hover {
+  background: var(--bg-elevated);
+  color: var(--text);
+}

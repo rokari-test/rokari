@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  /* Default theme (pink / Sakura) — applied fully on load via applyThemeFromPreferences */
+  --bg: #1a1018;
+  --bg-elevated: #281e26;
+  --bg-card: #281e26;
+  --bg-hover: #352d34;
+  --border: #433b42;
+  --border-subtle: #352d34;
+  --text: #edeced;
+  --text-muted: #b8b0b5;
+  --accent: #ff4d8d;
+  --accent-hover: #ff6ba3;
+  --accent-soft: #ff9ec4;
+  --accent-dim: rgba(255, 77, 141, 0.14);
+  --accent-glow: rgba(255, 77, 141, 0.28);
+  --color-secondary: #4c1d32;
+  --color-accent-surface: #3a1928;
+  --beta: #ff9f43;
+  --success: #3dd68c;
+  --warning: #f5a623;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --header-h: 56px;
+  --site-max: 1536px;
+  --site-gutter: clamp(1rem, 2.5vw, 1.5rem);
+  --series-max: 1280px;
+  --max-width: var(--site-max);
+  --card-w: 156px;
+  --card-gap: 0.7rem;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --card-w: 152px;
+    --card-gap: 0.75rem;
+  }
+}
+
+/* Light/dark surfaces come from applyThemeFromPreferences (full palette per theme) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container,
+.container--wide {
+  width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+  box-sizing: border-box;
+}
+
+.container--series {
+  width: 100%;
+  max-width: var(--series-max);
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+  box-sizing: border-box;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

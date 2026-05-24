@@ -1,0 +1,322 @@
+.coin-unlock-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.coin-unlock-modal {
+  width: min(420px, 100%);
+  padding: 1.15rem 1.2rem 1.2rem;
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-subtle));
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -15%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+    var(--bg-elevated);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.48);
+}
+
+.coin-unlock-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.coin-unlock-eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.coin-unlock-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.coin-unlock-sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.coin-unlock-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-card) 60%, transparent);
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.coin-unlock-close:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.coin-unlock-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  margin-bottom: 1rem;
+}
+
+.coin-unlock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.84rem;
+}
+
+.coin-unlock-row span {
+  color: var(--text-muted);
+}
+
+.coin-unlock-row strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.coin-unlock-row--deduct strong {
+  color: #f87171;
+}
+
+.coin-unlock-row--after {
+  margin-top: 0.35rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed color-mix(in srgb, var(--accent) 22%, var(--border-subtle));
+}
+
+.coin-unlock-row--after strong {
+  color: var(--accent-soft);
+  font-size: 1rem;
+}
+
+.coin-unlock-error {
+  margin: -0.35rem 0 0.85rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, #f87171 35%, transparent);
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  color: #fca5a5;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.coin-unlock-actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.coin-unlock-btn {
+  flex: 1;
+  min-height: 42px;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.coin-unlock-btn--ghost {
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+  color: var(--text-muted);
+}
+
+.coin-unlock-btn--ghost:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.coin-unlock-btn--primary {
+  border: none;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  color: var(--color-primary-text, #fff);
+  box-shadow: 0 8px 22px var(--accent-glow);
+}
+
+.coin-unlock-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.coin-unlock-btn--primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.coin-unlock-foot {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.coin-unlock-foot button {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent-soft);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.coin-unlock-shortfall {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: -0.35rem 0 0.85rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, #fbbf24 35%, transparent);
+  background: color-mix(in srgb, #fbbf24 10%, transparent);
+  font-size: 0.78rem;
+}
+
+.coin-unlock-shortfall span {
+  color: var(--text-muted);
+}
+
+.coin-unlock-shortfall strong {
+  color: #fcd34d;
+  font-weight: 800;
+}
+
+.coin-unlock-upsell {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.coin-unlock-upsell-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.coin-unlock-actions--stack {
+  flex-direction: column;
+}
+
+.coin-unlock-actions--upsell {
+  margin-top: 0;
+}
+
+.coin-unlock-btn--secondary {
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border-subtle));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent-soft);
+}
+
+.coin-unlock-btn--secondary:hover {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.coin-unlock-modal--subscribe {
+  width: min(460px, 100%);
+}
+
+.coin-unlock-timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-secondary, var(--accent)) 28%, var(--border-subtle));
+  background: color-mix(in srgb, var(--color-secondary, var(--accent)) 8%, transparent);
+  text-align: center;
+}
+
+.coin-unlock-timer-box strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-soft);
+  letter-spacing: 0.02em;
+}
+
+.coin-unlock-timer-label,
+.coin-unlock-timer-plan {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.coin-unlock-plan-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.coin-unlock-plan-card {
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--plan-accent, var(--accent)) 24%, var(--border-subtle));
+  background: color-mix(in srgb, var(--plan-accent, var(--accent)) 6%, transparent);
+}
+
+.coin-unlock-plan-card.is-current {
+  border-color: color-mix(in srgb, var(--plan-accent, var(--accent)) 45%, var(--border));
+}
+
+.coin-unlock-plan-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.coin-unlock-plan-card-head strong {
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.coin-unlock-plan-card-head span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--plan-accent, var(--accent-soft));
+}
+
+.coin-unlock-plan-card p {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
