@@ -163,7 +163,7 @@ export function seedReportsIfEmpty() {
       type: 'harassment',
       status: 'resolved',
       target: 'Profile @toxic_user',
-      reporter: 'sakura_mod',
+      reporter: 'rokari_mod',
       note: 'Warning issued',
     },
   ]

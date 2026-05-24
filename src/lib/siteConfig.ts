@@ -7,7 +7,7 @@ export interface SiteConfig {
 }
 
 const defaults: SiteConfig = {
-  siteName: 'Sakura',
+  siteName: 'Rokari',
   tagline: 'Premium manhwa reading — clean, fast, distraction-free.',
 }
 

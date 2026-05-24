@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  /* Default theme (pink / Sakura) — applied fully on load via applyThemeFromPreferences */
-  --bg: #1a1018;
-  --bg-elevated: #281e26;
-  --bg-card: #281e26;
-  --bg-hover: #352d34;
-  --border: #433b42;
-  --border-subtle: #352d34;
+  /* Default theme (pink / Rokari) — applied fully on load via applyThemeFromPreferences */
+  --bg: #0a0e23;
+  --bg-elevated: #101429;
+  --bg-card: #1a1118;
+  --bg-hover: #1c1f35;
+  --border: #2a3048;
+  --border-subtle: #1c1524;
   --text: #edeced;
   --text-muted: #b8b0b5;
   --accent: #ff4d8d;
@@ -58,10 +58,21 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: var(--bg);
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
+  background-image: linear-gradient(
+    165deg,
+    #0a0e23 0%,
+    #101429 42%,
+    #1a1118 100%
+  );
+  background-attachment: fixed;
   color: var(--text);
 }
 

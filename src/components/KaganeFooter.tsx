@@ -32,7 +32,7 @@ export function KaganeFooter() {
               </a>
             </li>
             <li>
-              <a href="mailto:support@sakura.local">support@sakura.local</a>
+              <a href="mailto:support@rokari.local">support@rokari.local</a>
             </li>
           </ul>
         </div>

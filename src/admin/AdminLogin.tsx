@@ -31,10 +31,6 @@ export function AdminLogin() {
           Sign in with the admin password, or use a site account with <strong>Admin</strong> /{' '}
           <strong>Site owner</strong> role on the main site.
         </p>
-        <p className="admin-login-hint">
-          Default password: <code>changeme</code> — set <code>VITE_ADMIN_PASSWORD</code> in{' '}
-          <code>.env</code> for production.
-        </p>
         <form onSubmit={handleSubmit}>
           <div className="admin-form-row">
             <label htmlFor="admin-password">Password</label>

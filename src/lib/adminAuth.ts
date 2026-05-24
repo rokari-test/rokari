@@ -2,7 +2,7 @@ import { canAccessAdminPanel, getCurrentUser } from './userAuth'
 
 const SESSION_KEY = 'inkscroll-admin-session'
 
-const DEFAULT_PASSWORD = 'changeme'
+const DEFAULT_PASSWORD = '1234567899'
 
 export function getAdminPassword(): string {
   return import.meta.env.VITE_ADMIN_PASSWORD ?? DEFAULT_PASSWORD

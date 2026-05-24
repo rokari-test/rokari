@@ -56,7 +56,7 @@ export function logActivity(
 export function seedActivityIfEmpty() {
   if (listActivity(1).length > 0) return
   const samples: Omit<AdminActivity, 'id' | 'at'>[] = [
-    { kind: 'settings', title: 'Site name updated', detail: 'Sakura' },
+    { kind: 'settings', title: 'Site name updated', detail: 'Rokari' },
     { kind: 'chapter', title: 'Chapter batch published', detail: '12 series updated' },
     { kind: 'subscription', title: 'Premium plan renewed', detail: '+$9.99 MRR' },
     { kind: 'signup', title: 'New reader registered', detail: '@nightowl' },

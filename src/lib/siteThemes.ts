@@ -30,7 +30,7 @@ function buildTheme(seed: ThemeSeed): SiteTheme {
 }
 
 const THEME_SEEDS: ThemeSeed[] = [
-  { id: 'default', name: 'Default', category: 'neutral', accent: '#ff4d8d', accentHover: '#ff6ba3', accentSoft: '#ff9ec4', previewBar: '#ec4899', previewBg: '#1a1018' },
+  { id: 'default', name: 'Default', category: 'neutral', accent: '#ff4d8d', accentHover: '#ff6ba3', accentSoft: '#ff9ec4', previewBar: '#ec4899', previewBg: '#0a0e23' },
   { id: 'mono', name: 'Mono', category: 'neutral', accent: '#a1a1aa', accentHover: '#d4d4d8', accentSoft: '#e4e4e7', previewBar: '#52525b', previewBg: '#18181b' },
   { id: 'clean-slate', name: 'Clean Slate', category: 'neutral', accent: '#3b82f6', accentHover: '#60a5fa', accentSoft: '#93c5fd', previewBar: '#2563eb', previewBg: '#0f172a' },
   { id: 'graphite', name: 'Graphite', category: 'neutral', accent: '#71717a', accentHover: '#a1a1aa', accentSoft: '#d4d4d8', previewBar: '#3f3f46', previewBg: '#141416' },
@@ -41,7 +41,7 @@ const THEME_SEEDS: ThemeSeed[] = [
   { id: 'crimson', name: 'Crimson', category: 'warm', accent: '#ef4444', accentHover: '#f87171', accentSoft: '#fca5a5', previewBar: '#dc2626', previewBg: '#1a0a0c' },
   { id: 'gold-rush', name: 'Gold Rush', category: 'warm', accent: '#eab308', accentHover: '#facc15', accentSoft: '#fde047', previewBar: '#ca8a04', previewBg: '#1a1608' },
   { id: 'rose-gold', name: 'Rose Gold', category: 'warm', accent: '#e8b4b8', accentHover: '#f0d0d3', accentSoft: '#f8e8ea', previewBar: '#be8f93', previewBg: '#1c1416' },
-  { id: 'sakura', name: 'Sakura', category: 'warm', accent: '#ff4d8d', accentHover: '#ff6ba3', accentSoft: '#ff9ec4', previewBar: '#ec4899', previewBg: '#1a1018' },
+  { id: 'rokari', name: 'Rokari', category: 'warm', accent: '#ff4d8d', accentHover: '#ff6ba3', accentSoft: '#ff9ec4', previewBar: '#ec4899', previewBg: '#0a0e23' },
   { id: 'sunset', name: 'Sunset', category: 'warm', accent: '#ea580c', accentHover: '#f97316', accentSoft: '#fdba74', previewBar: '#c2410c', previewBg: '#1c1008' },
   { id: 'vintage-paper', name: 'Vintage Paper', category: 'warm', accent: '#a68a64', accentHover: '#c4a882', accentSoft: '#e8dcc8', previewBar: '#8b7355', previewBg: '#1a1814' },
   { id: 'arctic', name: 'Arctic', category: 'cool', accent: '#38bdf8', accentHover: '#7dd3fc', accentSoft: '#bae6fd', previewBar: '#0ea5e9', previewBg: '#0c1929' },

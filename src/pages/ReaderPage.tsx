@@ -140,7 +140,7 @@ export function ReaderPage() {
     })
     document.title = title || `${data.series.title} — Ch. ${data.chapter.number}`
     return () => {
-      document.title = 'Sakura — Manhwa'
+      document.title = 'Rokari — Manhwa'
     }
   }, [data?.series.title, data?.chapter.number, data?.chapter.title, readerPrefs.readerTabTitle])
 

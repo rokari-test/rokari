@@ -62,7 +62,7 @@ export function AdminDashboard() {
     <div className="admin-dash">
       <header className="admin-dash-hero">
         <div>
-          <p className="admin-dash-eyebrow">Sakura admin</p>
+          <p className="admin-dash-eyebrow">Rokari admin</p>
           <h1 className="admin-page-title">Dashboard</h1>
           <p className="admin-page-sub">
             Site overview — accounts, subscriptions, catalog, and moderation. Demo stats start at zero.
