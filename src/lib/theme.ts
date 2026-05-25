@@ -15,7 +15,7 @@ const LEGACY_ACCENT_MAP: Record<string, string> = {
   rose: 'mono',
 }
 
-export const DEFAULT_SITE_THEME_ID = 'default'
+export const DEFAULT_SITE_THEME_ID = 'midnight-blue'
 
 export function resolveSiteThemeId(prefs: UserPreferences): string {
   if (prefs.siteThemeId) return prefs.siteThemeId

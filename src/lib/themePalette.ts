@@ -39,15 +39,15 @@ export const DEFAULT_LIGHT_PALETTE: ThemePalette = {
 }
 
 export const DEFAULT_DARK_PALETTE: ThemePalette = {
-  background: '#0a0e23',
+  background: '#0f1029',
   text: '#edeced',
-  primary: '#ff4d8d',
+  primary: '#6366f1',
   primaryText: '#ffffff',
-  secondary: '#4c1d32',
-  accent: '#3a1928',
-  muted: '#1c1524',
-  card: '#1a1118',
-  border: '#2a3048',
+  secondary: '#2a2d5c',
+  accent: '#1a1d42',
+  muted: '#1a1d35',
+  card: '#171831',
+  border: '#2a2d4a',
   destructive: '#ef4444',
 }
 

@@ -32,8 +32,8 @@ const defaults: UserPreferences = {
   defaultComicWidth: 'standard',
   hideReaderHint: false,
   themeMode: 'dark',
-  siteThemeId: 'default',
-  accentPreset: 'pink',
+  siteThemeId: 'midnight-blue',
+  accentPreset: 'blossom',
   contentRating: 'SG',
   showScanlations: true,
   preferredLanguages: [],
@@ -47,8 +47,14 @@ export function loadPreferences(): UserPreferences {
     if (!raw) return defaults
     const merged = { ...defaults, ...JSON.parse(raw) } as UserPreferences
     if (!merged.siteThemeId) merged.siteThemeId = defaults.siteThemeId
-    // Pink is the site default; treat legacy sakura/rokari theme ids as default
-    if (merged.siteThemeId === 'sakura' || merged.siteThemeId === 'rokari') merged.siteThemeId = 'default'
+    // Midnight Blue is the site default; migrate legacy default theme ids
+    if (
+      merged.siteThemeId === 'default' ||
+      merged.siteThemeId === 'sakura' ||
+      merged.siteThemeId === 'rokari'
+    ) {
+      merged.siteThemeId = 'midnight-blue'
+    }
     if (!Array.isArray(merged.preferredLanguages)) merged.preferredLanguages = []
     if (!merged.thumbnailSize) merged.thumbnailSize = defaults.thumbnailSize
     if (!merged.browsePageSize || merged.browsePageSize < 12) merged.browsePageSize = defaults.browsePageSize
